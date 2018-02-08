@@ -1,0 +1,32 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "todo-items": {
+      "type": "hasMany",
+      "model": "todo-item",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
