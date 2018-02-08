@@ -36,11 +36,11 @@
     "public": false
   },
   "todo-item": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "MongoDB",
     "public": true
   }
 }

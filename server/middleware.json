@@ -28,6 +28,9 @@
     "helmet#noSniff": {},
     "helmet#noCache": {
       "enabled": false
+    },
+    "morgan": {
+      "params": ["dev"]
     }
   },
   "session": {},
@@ -39,8 +42,13 @@
         "${restApiRoot}"
       ]
     }
+  
   },
-  "files": {},
+  "files": {
+    "loopback#static": {
+      "params": "$!../client"
+    }
+  },
   "final": {
     "loopback#urlNotFound": {}
   },
