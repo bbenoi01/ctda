@@ -10,13 +10,21 @@
       "type": "string",
       "required": true
     },
-    "due-date": {
+    "dueDate": {
       "type": "string",
       "required": true
     },
     "priority": {
       "type": "string",
       "required": true
+    },
+    "isCompleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "editEnabled": {
+      "type": "boolean",
+      "default": false
     }
   },
   "validations": [],
