@@ -3,7 +3,7 @@ import ToDoList from '../components/toDoList';
 
 function mapStoreToProps(store) {
     return {
-        userToDos: store.viewToDos.userToDos
+        userToDos: store.app.userToDos
     }
 }
 

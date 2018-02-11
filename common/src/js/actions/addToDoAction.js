@@ -31,11 +31,14 @@ export function createPriority(value) {
 export function createNewToDo(description, dueDate, priority) {
     console.log(42, {description, dueDate, priority});
     return (dispatch) => {
-        dispatch({
-            type: types.NEW_TODO,
-            payload: axios.post('http://localhost:3000/api/todo-items', {description, dueDate, priority})
-            .then(results => { return results.data; alert('Add successful') })
+        axios.post('http://localhost:3000/api/todo-items', {description, dueDate, priority});
+        axios.get('http://localhost:3000/api/todo-items')
+            .then(res => {
+                dispatch({
+                    type: 'USERID_TODOS',
+                    payload: res.data
+                })
+            })
             .catch(err => console.log(err))
-        })
     }
 }

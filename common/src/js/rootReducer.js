@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import AddToDoReducer from './reducers/addToDoReducer';
-import ViewToDosReducer from './reducers/viewToDosReducer';
+import AppReducer from './reducers/appReducer';
+// import AddToDoReducer from './reducers/addToDoReducer';
+// import ViewToDosReducer from './reducers/viewToDosReducer';
 
 const rootReducer = combineReducers({
-    addToDo: AddToDoReducer,
-    viewToDos: ViewToDosReducer
+    app: AppReducer
 
 });
 
