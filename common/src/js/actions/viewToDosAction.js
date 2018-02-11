@@ -15,3 +15,15 @@ export function userToDos() {
             })
     }
 }
+
+export function removeItem(id) {
+    console.log(`http://localhost:3000/api/todo-items/${id}`);
+    return (dispatch) => {
+        axios.delete(`http://localhost:3000/api/todo-items/${id}`)
+        .then(res => {
+            dispatch(userToDos())
+        })
+        .catch(err => console.log('err'))
+        
+    }
+}
