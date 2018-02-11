@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-    userToDos
+    userToDos,
+    removeItem
 } from '../actions/viewToDosAction';
 import Welcome from '../indexes/welcomeIndex';
 
@@ -8,11 +9,21 @@ import Welcome from '../indexes/welcomeIndex';
 export default class ToDoList extends Component {
     constructor(props) {
         super(props);
+
+
+        this.removeItem = this.removeItem.bind(this);
     }
 
     componentWillMount() {
         const { dispatch } = this.props;
         dispatch(userToDos());
+    }
+
+    removeItem(e) {
+        const { dispatch } = this.props;
+        const { id } = e.target;
+        console.log(45, id);
+        dispatch(removeItem(id))
     }
 
     render() {
@@ -29,7 +40,7 @@ export default class ToDoList extends Component {
                     </div>
                 </div>
             );
-        } else {
+        } else { 
             return (
                 <div className="col l7 s12">
                     <div className="card blue-grey darken-1">
@@ -40,12 +51,12 @@ export default class ToDoList extends Component {
                                     <li style={{marginBottom: '0'}} key={ToDos.id} className={ToDos.priority}>
                                         <p>
                                             <input type="checkbox" />
-                                            <label htmlFor=""></label>
+                                            <label htmlFor="">{ToDos.description}</label>
                                         </p>
                                         <div className="right" style={{display: 'inline'}}>
                                             Due: {ToDos.dueDate}
                                             <a style={{marginRight: '7px', marginLeft: '15px'}} href="#"><i className="fas fa-edit fa-lg"></i></a>
-                                            <a href="#"><i className="far fa-trash-alt fa-lg"></i></a>
+                                            <a href="#" onClick={this.removeItem}><i className="far fa-trash-alt fa-lg" id={ToDos.id}></i></a>
                                         </div>
                                     </li>
                                 )}
