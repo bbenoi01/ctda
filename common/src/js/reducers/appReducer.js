@@ -1,12 +1,14 @@
 import { types } from '../actions/addToDoAction';
+// import { types } from "../actions/viewToDosAction";
 
 const INITIAL_STATE = {
     description: '',
     dueDate: '',
-    priority: ''
+    priority: '',
+    userToDos: []
 };
 
-export default function AddToDoReducer(state = INITIAL_STATE, action) {
+export default function AppReducer(state = INITIAL_STATE, action) {
     const { type, payload } = action;
     switch (type) {
         case types.CREATE_DESC: {
@@ -40,6 +42,16 @@ export default function AddToDoReducer(state = INITIAL_STATE, action) {
                 description: payload.description,
                 dueDate: payload.dueDate,
                 priority: payload.priority
+            };
+            break;
+        }
+
+        case 'USERID_TODOS': {
+            console.log(100,payload);
+            return {
+                ...state,
+                userToDos: payload
+                
             };
             break;
         }
