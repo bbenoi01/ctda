@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import {
     userToDos,
-    removeItem
+    removeItem,
+    enableEdit,
+    editToggle
 } from '../actions/viewToDosAction';
 import Welcome from '../indexes/welcomeIndex';
+import ToDoEdit from '../indexes/toDoEditIndex';
 
 
 export default class ToDoList extends Component {
@@ -12,6 +15,7 @@ export default class ToDoList extends Component {
 
 
         this.removeItem = this.removeItem.bind(this);
+        this.enableEdit = this.enableEdit.bind(this);
     }
 
     componentWillMount() {
@@ -24,6 +28,13 @@ export default class ToDoList extends Component {
         const { id } = e.target;
         console.log(45, id);
         dispatch(removeItem(id))
+    }
+
+    enableEdit(e) {
+        const { dispatch } = this.props;
+        const { id, contentEditable } = e.target;
+        dispatch(enableEdit(id, contentEditable));
+        dispatch(editToggle(contentEditable));
     }
 
     render() {
@@ -47,18 +58,21 @@ export default class ToDoList extends Component {
                         <div className="card-content" id='todo-view'>
                             <span className="card-title center"><b>View ToDos</b></span>
                             <ul id='list'>
-                                {userToDos.map(ToDos =>
-                                    <li style={{marginBottom: '0'}} key={ToDos.id} className={ToDos.priority}>
-                                        <p>
-                                            <input type="checkbox" />
-                                            <label htmlFor="">{ToDos.description}</label>
-                                        </p>
-                                        <div className="right" style={{display: 'inline'}}>
-                                            Due: {ToDos.dueDate}
-                                            <a style={{marginRight: '7px', marginLeft: '15px'}} href="#"><i className="fas fa-edit fa-lg"></i></a>
-                                            <a href="#" onClick={this.removeItem}><i className="far fa-trash-alt fa-lg" id={ToDos.id}></i></a>
-                                        </div>
-                                    </li>
+                                <ToDoEdit />
+                                {userToDos.map(ToDo =>
+                                    <div key={ToDo.id}>
+                                        <li style={{marginBottom: '0'}} className={ToDo.priority}>
+                                            <p>
+                                                <input type="checkbox" />
+                                                <label htmlFor="" className='black-text'>{' ' + ToDo.description}</label>
+                                            </p>
+                                            <div className="right" style={{display: 'inline'}}>
+                                                Due: {ToDo.dueDate}
+                                                <a style={{marginRight: '7px', marginLeft: '15px'}} href="#" onClick={this.enableEdit}><i className="fas fa-edit fa-lg" contentEditable={ToDo.editEnabled} id={ToDo.id}></i></a>
+                                                <a href="#" onClick={this.removeItem}><i className="far fa-trash-alt fa-lg" id={ToDo.id}></i></a>
+                                            </div>
+                                        </li>
+                                    </div>
                                 )}
                             </ul>
                         </div>
