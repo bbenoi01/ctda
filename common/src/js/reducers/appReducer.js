@@ -5,6 +5,7 @@ const INITIAL_STATE = {
     description: '',
     dueDate: '',
     priority: '',
+    editable: '',
     userToDos: []
 };
 
@@ -51,7 +52,14 @@ export default function AppReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 userToDos: payload
-                
+            };
+            break;
+        }
+
+        case 'TOGGLE_EDIT': {
+            return {
+                ...state,
+                editable: payload
             };
             break;
         }
