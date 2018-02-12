@@ -53,13 +53,6 @@ export function enableEdit(id, contentEditable) {
 
 }
 
-export function editToggle(contentEditable) {
-    return {
-        type: 'TOGGLE_EDIT',
-        payload: contentEditable
-    }
-}
-
 export function descEdit(value) {
     return {
         type: types.UPDATE_DESC,

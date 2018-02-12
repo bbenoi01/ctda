@@ -6,8 +6,7 @@ function mapStoreToProps(store) {
         userToDos: store.app.userToDos,
         description: store.toDoEdit.descEdit,
         dueDate: store.toDoEdit.dueDateEdit,
-        priority: store.toDoEdit.priorityEdit,
-        editable: store.app.editable
+        priority: store.toDoEdit.priorityEdit
     }
 }
 
