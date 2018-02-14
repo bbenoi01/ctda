@@ -8,15 +8,15 @@
   "properties": {
     "description": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "dueDate": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "priority": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "isCompleted": {
       "type": "boolean",

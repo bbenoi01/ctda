@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
+import {
+    userToDos
+} from './actions/appAction';
 import Navbar from './indexes/navbarIndex';
+import Welcome from './indexes/welcomeIndex';
 import AddToDo from './indexes/addToDoIndex';
-import ViewToDos from './indexes/viewToDosIndex';
-
+import ToDoList from './indexes/toDoList';
 
 export default class App extends Component {
+
+    componentWillMount() {
+        const { dispatch } = this.props;
+        dispatch(userToDos());
+    }
+
     render() {
+        const { toDos } = this.props;
+        console.log(toDos);
+
+        if (toDos.length == 0) {
+            var toDoView = <Welcome />
+        } else {
+            var toDoView = <ToDoList />
+        }
+
         return (
             <div>
                 <Navbar />
@@ -21,7 +39,14 @@ export default class App extends Component {
                 <div className="container">
                     <div className="row">
                         <AddToDo />
-                        <ViewToDos />
+                        <div className="col l7 s12">
+                            <div className="card blue-grey darken-1">
+                                <div className="card-content" id='todo-view'>
+                                    <span className="card-title center"><b>View ToDos</b></span>
+                                    {toDoView}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

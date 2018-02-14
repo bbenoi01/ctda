@@ -3,9 +3,9 @@ import AddToDo from '../components/addToDo';
 
 function mapStoreToProps(store) {
     return {
-        description: store.app.description,
-        dueDate: store.app.dueDate,
-        priority: store.app.priority
+        description: store.addToDo.description,
+        dueDate: store.addToDo.dueDate,
+        priority: store.addToDo.priority
     }
 }
 
