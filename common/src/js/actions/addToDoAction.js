@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const types = {
+    USER_TODOS: 'USER_TODOS',
     CREATE_DESC: 'CREATE_DESC',
     CREATE_DUE_DATE: 'CREATE_DUE_DATE',
-    CREATE_PRIORITY: 'CREATE_PRIORITY',
-    NEW_TODO: 'NEW_TODO'
+    CREATE_PRIORITY: 'CREATE_PRIORITY'
 }
 
 export function createDescText(value) {
@@ -35,7 +35,7 @@ export function createNewToDo(description, dueDate, priority) {
         axios.get('http://localhost:3000/api/todo-items')
             .then(res => {
                 dispatch({
-                    type: 'USERID_TODOS',
+                    type: types.USER_TODOS,
                     payload: res.data
                 })
             })

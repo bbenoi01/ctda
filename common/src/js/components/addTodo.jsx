@@ -42,7 +42,6 @@ export default class AddToDo extends Component {
         document.getElementById('addForm').reset();
     }
 
-
     render() {
         return (
             <div className="col l5 s12">

@@ -5,7 +5,7 @@ import {
     dueDateEdit,
     priorityEdit,
     editToDo
-} from '../actions/viewToDosAction';
+} from '../actions/toDoEditAction';
 
 export default class ToDoEdit extends Component {
     constructor(props) {
@@ -43,25 +43,23 @@ export default class ToDoEdit extends Component {
         dispatch(editToDo(description, dueDate, priority, id))
     }
 
-
-
     render() {
-        const { userToDos } = this.props;
+        const { editEnabled, itemPriority, itemDescription, itemDueDate, itemId } = this.props;
 
-        return (
-            <div>
-                {!!userToDos && userToDos.filter(ToDo => ToDo.editEnabled === true).map(ToDo =>
-                    <li style={{marginBottom: '0'}} key={ToDo.id} className={ToDo.priority}>
+        if(editEnabled) {
+            return (
+                <div>
+                    <li style={{marginBottom: '0'}} className={itemPriority}>
                         <label htmlFor="">Description</label>
-                        <textarea defaultValue={ToDo.description} onChange={this.handleDescEdit} className="white browser-default"></textarea>
+                        <textarea defaultValue={itemDescription} onChange={this.handleDescEdit} className="white browser-default"></textarea>
                         <div className="row">
                             <div style={{marginTop: '10px'}} className="m6 s6">
                                 <label htmlFor="">Due Date</label>
-                                <input type="date" defaultValue={ToDo.dueDate} onChange={this.handleDueDateEdit}/>
+                                <input type="date" defaultValue={itemDueDate} onChange={this.handleDueDateEdit}/>
                             </div>
                             <div style={{marginTop: '10px'}} className="m6 s6">
                                 <label htmlFor="">Priority</label>
-                                <Input s={12} type='select' defaultValue={ToDo.priority} onChange={this.handlePriorityEdit} >
+                                <Input s={12} type='select' defaultValue={itemPriority} onChange={this.handlePriorityEdit} >
                                     <option value="" disabled selected>Select Priority Level</option>
                                     <option value="card-content green lighten-4">Low</option>
                                     <option value="card-content yellow lighten-4">Medium</option>
@@ -69,12 +67,14 @@ export default class ToDoEdit extends Component {
                                 </Input>                           
                             </div>
                             <div>
-                                <button style={{marginTop: '10px'}} className='amber accent-4 white-text btn right' contentEditable={ToDo.editEnabled} id={ToDo.id} onClick={this.handleClick} >Save</button>
+                                <button style={{marginTop: '10px'}} className='amber accent-4 white-text btn right' id={itemId} onClick={this.handleClick} >Save</button>
                             </div>
                         </div>
                     </li>
-                )}
-            </div>
-        )
+                </div>
+            )
+        } else {
+            return null;
+        }
     }
 }

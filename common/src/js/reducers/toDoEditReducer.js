@@ -1,4 +1,4 @@
-import { types } from '../actions/viewToDosAction';
+import { types } from '../actions/toDoEditAction';
 
 const INITIAL_STATE = {
     descEdit: '',
