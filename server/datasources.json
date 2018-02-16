@@ -8,9 +8,9 @@
     "port": 0,
     "url": "",
     "database": "",
-    "password": "",
+    "password": "1lthmgb8gs3tu6b37tk7hho974",
     "name": "MongoDB",
-    "user": "",
+    "user": "heroku_gm3x6hfb",
     "connector": "mongodb"
   }
 }
