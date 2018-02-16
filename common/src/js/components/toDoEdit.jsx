@@ -50,26 +50,28 @@ export default class ToDoEdit extends Component {
             return (
                 <div>
                     <li style={{marginBottom: '0'}} className={itemPriority}>
-                        <label htmlFor="">Description</label>
-                        <textarea defaultValue={itemDescription} onChange={this.handleDescEdit} className="white browser-default"></textarea>
-                        <div className="row">
-                            <div style={{marginTop: '10px'}} className="m6 s6">
-                                <label htmlFor="">Due Date</label>
-                                <input type="date" defaultValue={itemDueDate} onChange={this.handleDueDateEdit}/>
+                        <form onSubmit={this.handleClick} id={itemId}>
+                            <label htmlFor="">Description</label>
+                            <textarea defaultValue={itemDescription} onChange={this.handleDescEdit} className="white browser-default"></textarea>
+                            <div className="row">
+                                <div style={{marginTop: '10px'}} className="m6 s6">
+                                    <label htmlFor="">Due Date</label>
+                                    <input type="date" defaultValue={itemDueDate} onChange={this.handleDueDateEdit}/>
+                                </div>
+                                <div style={{marginTop: '10px'}} className="m6 s6">
+                                    <label htmlFor="">Priority</label>
+                                    <Input s={12} type='select' defaultValue={itemPriority} onChange={this.handlePriorityEdit} >
+                                        <option value="" disabled selected>Select Priority Level</option>
+                                        <option value="card-content green lighten-4">Low</option>
+                                        <option value="card-content yellow lighten-4">Medium</option>
+                                        <option value="card-content red lighten-4">High</option>
+                                    </Input>                           
+                                </div>
+                                <div>
+                                    <button type='submit' style={{marginTop: '10px'}} className='amber accent-4 white-text btn right' >Save</button>
+                                </div>
                             </div>
-                            <div style={{marginTop: '10px'}} className="m6 s6">
-                                <label htmlFor="">Priority</label>
-                                <Input s={12} type='select' defaultValue={itemPriority} onChange={this.handlePriorityEdit} >
-                                    <option value="" disabled selected>Select Priority Level</option>
-                                    <option value="card-content green lighten-4">Low</option>
-                                    <option value="card-content yellow lighten-4">Medium</option>
-                                    <option value="card-content red lighten-4">High</option>
-                                </Input>                           
-                            </div>
-                            <div>
-                                <button style={{marginTop: '10px'}} className='amber accent-4 white-text btn right' id={itemId} onClick={this.handleClick} >Save</button>
-                            </div>
-                        </div>
+                        </form>
                     </li>
                 </div>
             )
