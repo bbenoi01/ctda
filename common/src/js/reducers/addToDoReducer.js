@@ -32,17 +32,7 @@ export default function AddToDoReducer(state = INITIAL_STATE, action) {
             };
             break;
         }
-
-        case types.NEW_TODO: {
-            console.log(21,payload);
-            return {
-                ...state,
-                description: payload.description,
-                dueDate: payload.dueDate,
-                priority: payload.priority
-            };
-            break;
-        }
+        
         default: return state;
     }
 };

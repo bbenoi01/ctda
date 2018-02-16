@@ -5,7 +5,7 @@ import {
 import Navbar from './indexes/navbarIndex';
 import Welcome from './indexes/welcomeIndex';
 import AddToDo from './indexes/addToDoIndex';
-import ToDoList from './indexes/toDoList';
+import ToDoList from './indexes/toDoListIndex';
 
 export default class App extends Component {
 

@@ -4,7 +4,7 @@ import {
     enableEdit,
     editToggle
 } from '../actions/toDoListAction';
-import ToDoItem from '../indexes/toDoItem';
+import ToDoItem from '../indexes/toDoItemIndex';
 
 export default class ToDoList extends Component {
     constructor(props) {

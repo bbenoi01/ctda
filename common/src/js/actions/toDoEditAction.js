@@ -41,6 +41,7 @@ export function priorityEdit(value) {
 }
 
 export function editToDo(description, dueDate, priority, id) {
+    console.log(187, description, dueDate, priority);
     return (dispatch) => {
         axios.patch(`http://localhost:3000/api/todo-items/${id}`, {description, dueDate, priority, 'editEnabled': false})
         .then(res => {
